@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 
+
 @Controller
 public class BaseController {
 	
@@ -58,7 +59,19 @@ public class BaseController {
 		
 		Session session = factory.getCurrentSession();
 		
-		return mv;
+		try {
+			
+			session.beginTransaction();
+			
+			session.persist(user);
+			
+			session.getTransaction().commit();
+		
+		} finally {
+			session.close();
+			factory.close();
+		}
+			return mv;
 		
 	}
 	
