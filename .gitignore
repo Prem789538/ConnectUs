@@ -1,0 +1,8 @@
+target/
+classes/
+bin
+.classpath
+.project
+.settings
+.springBeans
+spring-*/src/main/java/META-INF/MANIFEST.MF
